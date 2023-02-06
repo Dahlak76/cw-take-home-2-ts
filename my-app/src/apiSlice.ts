@@ -13,7 +13,7 @@ const initialState: ApiState = {
   response: '',
   loading: false,
   error: null,
-};
+} 
 
 const apiSlice = createSlice({
   name: 'api',
@@ -38,7 +38,7 @@ export const { setResponse, setLoading, setError } = apiSlice.actions;
 export const fetchData = (payload: string) => async (dispatch: (arg0: { payload: string | undefined; type: "api/setResponse" | "api/setLoading" | "api/setError"; }) => void) => {
   try {
     dispatch(setLoading());
-    const response = await axios.post('http://localhost:3006/transform', { payload });
+    const response = await axios.post('http://localhost:3007/transform', { payload });
     dispatch(setResponse(response.data.transformedPayload));
   } catch (error: any) {
     dispatch(setError(error.message));
